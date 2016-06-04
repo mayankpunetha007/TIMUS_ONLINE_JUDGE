@@ -1,0 +1,83 @@
+#include <iostream>
+#include <cstdio>
+#include <cctype>
+#include <string>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <queue>
+#include <map>
+#include <set>
+#include <sstream>
+#include <fstream>
+#include <ctime>
+#include <cassert>
+#include <cstring>
+using namespace std;
+string add(string a,string b){
+    //cout<<a<<" "<<b<<endl;
+    int i=0,j=0;
+    int sum=0;
+    string answer="";
+    for(i=a.length()-1;i>=0 && j>=0;i--,j--){
+        sum+=(a[i]-'0' + b[i] -'0' + sum);
+        answer+=(sum%10+'0');
+        sum=sum/10;
+    }
+    //cout<<i<<" "<<j<<endl;
+    if(j>=0){
+        i=j;
+        a=b;
+    }
+    while(i>=0)
+    {
+        sum+=(a[i]-'0');
+        answer+=(sum%10 +'0');
+        sum/=10;
+        i--;
+    }
+    while(sum>0){
+        answer+=(sum%10 +48);
+        sum/=10;
+    }
+    //cout<<sum<<endl;
+    return answer;
+}
+string multiply(string a,string b){
+    if(a.length()<=1 || b.length()<=1){
+        char A[100000];
+        long long m=(atol(a.c_str())*atol(b.c_str()));
+        sprintf(A,"%lld",m);
+        string mk(A);
+        return mk;
+    }
+    int mid=a.length()/2,mid2=b.length()/2;
+    string a1=a.substr(0,mid);
+    //cout<<a1<<endl;
+    string a2=a.substr(mid,a.length()-mid);
+    //cout<<a2<<endl;
+    string b1=b.substr(0,mid2);
+    //cout<<b1<<endl;
+    string b2=b.substr(mid2,b.length()-mid2);
+    string f1= multiply(b2,a2);
+    string f2= multiply(b2,a1);
+    string f3=multiply(b1,a2);
+    string f4=multiply(b1,a1);
+    //cout<<f4;
+    for(int i=0;i<b2.length();i++)
+    {
+        f3+="0";
+        f4+="0";
+    }
+    string m1=add(f1,f2);
+    m1=add(m1,f3);
+    m1=add(m1,f4);
+    return m1;
+}
+int main()
+{
+    cout<<add("500","555");
+    cout<<multiply("500","555");
+	return 0;
+}

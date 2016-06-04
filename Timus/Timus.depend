@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1348392798 source:c:\users\mayank\desktop\coding\timus online judge\timus\abcde.cpp
+	<iostream>
+	<cstdio>
+	<cctype>
+	<string>
+	<cmath>
+	<vector>
+	<algorithm>
+	<stack>
+	<queue>
+	<map>
+	<set>
+	<sstream>
+	<fstream>
+	<ctime>
+	<cassert>
+	<cstring>
+
+1348403451 source:c:\users\mayank\desktop\coding\timus online judge\timus\cricinfo.cpp
+	<iostream>
+	<cstdio>
+	<cctype>
+	<string>
+	<cmath>
+	<vector>
+	<algorithm>
+	<stack>
+	<queue>
+	<map>
+	<set>
+	<sstream>
+	<fstream>
+	<ctime>
+	<cassert>
+	<cstring>
+

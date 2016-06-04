@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstdio>
+#include <cctype>
+#include <string>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <queue>
+#include <map>
+#include <set>
+#include <sstream>
+#include <fstream>
+#include <ctime>
+#include <cassert>
+#include <cstring>
+using namespace std;
+int main()
+{
+    int t;
+    scanf("%d",&t)
+    while(t--){
+        char c;
+        int m;
+        scanf("%c%d",&c,&m);
+        int A[]={-2,+2};
+        int B[]={-1,+1};
+        int result=0;
+        for(int i=0;i<2;i++)
+            for(int j=0;j<2;j++)
+                if(c+A[i]>='a' && c+A[i]<='h' m+B[j]>=1 && m+B[j]<=8 )
+                    result++;
+        for(int i=0;i<2;i++)
+            for(int j=0;j<2;j++)
+                if(c+B[i]>='a' && c+B[i]<='h' m+A[j]>=1 && m+A[j]<=8 )
+                    result++;
+    }
+	return 0;
+}
+

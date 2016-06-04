@@ -1,0 +1,61 @@
+#include <iostream>
+#include <cstdio>
+#include <cctype>
+#include <string>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <queue>
+#include <map>
+#include <set>
+#include <sstream>
+#include <fstream>
+#include <ctime>
+#include <cassert>
+#include <cstring>
+using namespace std;
+int sum[101][101];
+int A[101][101];
+int sums(int i,int j,int k,int l){
+    int suma=0;
+    for(int ia=i;ia<=k;ia++){
+        if(j-1>=0)
+            suma+=(sum[ia][l]-sum[ia][j-1]);
+        else
+            suma+=(sum[ia][l]-0);
+    }
+    return suma;
+}
+int main()
+{
+    int N;
+    scanf("%d",&N);
+    memset(sum,0,sizeof(sum));
+    memset(A,0,sizeof(A));
+    for(int i=0;i<N;i++)
+        for(int j=0;j<N;j++)
+            scanf("%d",&A[i][j]);
+    for(int i=0;i<N;i++)
+        sum[i][0]=A[i][0];
+    for(int i=0;i<N;i++)
+        for(int j=1;j<N;j++)
+            sum[i][j]=sum[i][j-1]+A[i][j];
+    int result=0;
+    int maxa=0;
+    for(int i=0;i<N;i++){
+        for(int j=0;j<N;j++){
+            for(int k=i;k<N;k++){
+                for(int l=j;l<N;l++){
+                        int ans=sums(i,j,k,l);
+                        if(ans>maxa)
+                            maxa=ans;
+                }
+            }
+        }
+    }
+
+    printf("%d\n",maxa);
+	return 0;
+}
+

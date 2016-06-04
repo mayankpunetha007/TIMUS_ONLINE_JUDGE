@@ -1,0 +1,72 @@
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+#include <cmath>
+using namespace std;
+int A[70000];
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    int k=0;
+    while(t--)
+    {
+        scanf("%d",&A[k]);
+        k++;
+    }
+    int s=ceil(sqrt(k/1.0));
+    vector< vector<int> > ci((k-1)/s+1);
+    //cout<<(k-1)/s<<endl;
+    for(int i=0;i<k;i++)
+        ci[i/s].push_back(A[i]);
+    //cout<<"uu";
+    int q;
+    scanf("%d",&q);
+    while(q--)
+    {
+        int a,b,x;
+        scanf("%d %d %d",&a,&b,&x);
+        //
+        int f=(a-1)/s;
+        int se=(b-1)/s;
+        if(f==s){
+            //cout<<"TTT";
+            bool ya=0;
+            for(int i=a-1;i<=b-1;i++)
+                if(A[i]==x){
+                    ya=1;
+                    break;
+                }
+            if(ya)
+                cout<<1;
+            else
+                cout<<0;
+        }
+        else{
+            int ya=0;
+                for(int i=a-1;i<(f+1)*k;i++)
+                if(A[i]==x){
+                    ya=1;
+                    break;
+                }
+            for(int i=f+1;i<se;i++)
+                if(binary_search(ci[i].begin(),ci[i].end(),x)){
+                    ya=1;
+                    break;
+                }
+
+            for(int i=se*k;i<b;i++)
+                if(A[i]==x){
+                    ya=1;
+                    break;
+                }
+                if(ya)
+                    cout<<1;
+                else
+                    cout<<0;
+
+        }
+    }
+
+}
